@@ -51,6 +51,11 @@
         NSDictionary *headers = @{};
         NSString *allHeaders = @"";
         
+        if (error != nil) {
+            statusCode = [NSNumber numberWithInteger:error.code];
+            statusText = @"ERROR";
+        }
+
         if ([response isKindOfClass:NSHTTPURLResponse.class]) {
             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
             statusCode = [NSNumber numberWithInteger:httpResponse.statusCode];
